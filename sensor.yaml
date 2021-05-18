@@ -1,0 +1,44 @@
+#home
+#Name_from_Person1
+- platform: mqtt
+  state_topic: 'home/Fort-Smith/Name_from_Person1'
+  value_template: '{{ value_json.confidence }}'
+  unit_of_measurement: '%'
+  name: 'Name_from_Person1_Haus'
+
+- platform: mqtt
+  state_topic: 'home/Garden/Name_from_Person1'
+  value_template: '{{ value_json.confidence }}'
+  unit_of_measurement: '%'
+  name: 'Name_from_Person1_Garden'
+#Name_from_Person2
+- platform: mqtt
+  state_topic: 'mhome/Fort-Smith/Name_from_Person2'
+  value_template: '{{ value_json.confidence }}'
+  unit_of_measurement: '%'
+  name: 'Name_from_Person2_Haus'
+
+- platform: mqtt
+  state_topic: 'mhome/Garden/Name_from_Person2'
+  value_template: '{{ value_json.confidence }}'
+  unit_of_measurement: '%'
+  name: 'Name_from_Person2_Garden'
+
+#amybody_home
+- platform: min_max
+  name: "Jemand zu Hause"
+  type: max
+  round_digits: 0
+  entity_ids:
+    - sensor.Name_from_Person1_Haus
+    - sensor.Name_from_Person1_Garden
+    - sensor.Name_from_Person2_Haus
+    - sensor.Name_from_Person2_Garden
+
+- platform: min_max
+  name: "Jemand im Garten"
+  type: max
+  round_digits: 0
+  entity_ids:
+    - sensor.Name_from_Person1_Garden
+    - sensor.Name_from_Person2_Garden
