@@ -60,7 +60,7 @@ fi
 hciconfig hci0 up
 
 check_status() {
-        # in my case the MQTT Topic is Jan but my person in HA is jan instead of "fixin this in mqtt i decided to fix it here.
+        # in my case the MQTT Topic is jan but my person in HA is Jan instead of "fixin this in mqtt i decided to fix it here.
         Mperson=`echo $person|tr "[:upper:]" "[:lower:]"`
         home=$(hcitool name $bluetooth)
         if [ ! "$home" =  "" ]
